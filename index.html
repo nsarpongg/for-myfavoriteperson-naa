@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magdalene 💕</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  width: 92%;
+  max-width: 380px;
+  border-radius: 25px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  z-index: 2;
+}
+
+h1 {
+  font-size: 22px;
+  color: #ff4d6d;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 14px;
+  color: #555;
+}
+
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  margin: 15px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  scroll-snap-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+button {
+  padding: 14px 32px;
+  font-size: 17px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ff4d6d;
+  color: white;
+}
+
+#no {
+  background: #ddd;
+  position: fixed;
+  z-index: 5;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -100px;
+  width: 35px;
+  height: 50px;
+  border-radius: 50%;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  to { transform: translateY(-120vh); }
+}
+
+iframe {
+  border-radius: 12px;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Magdalene Naadei 💕</h1>
+  <p>Will you be my Valentine?</p>
+
+  <div class="gallery">
+    <!-- 🔥 REPLACE THESE 3 LINKS -->
+    <a href='https://postimg.cc/dh22Pcw9' target='_blank'><img src='https://i.postimg.cc/rwbQ4qH7/IMG-7891.jpg' border='0' alt='IMG-7891'></a>
+   
+  </div>
+
+  <button id="yes">Yes 💖</button>
+</div>
+
+<button id="no">No 🙃</button>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const card = document.getElementById("card");
+
+function moveNo() {
+  const padding = 20;
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+moveNo();
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("click", moveNo);
+
+yesBtn.addEventListener("click", () => {
+  noBtn.style.display = "none";
+  card.innerHTML = `
+    <h1>You said YES 😍💘</h1>
+    <p>Happy Valentine’s Day, my love.</p>
+
+    <iframe 
+      src="https://open.spotify.com/embed/track/1Fid2jjqsHViMX6xNH70hE"
+      width="100%" 
+      height="80"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+
+    <p style="margin-top:10px;">— Naadei 💖</p>
+  `;
+  launchBalloons();
+});
+
+function launchBalloons() {
+  for (let i = 0; i < 30; i++) {
+    const b = document.createElement("div");
+    b.className = "balloon";
+    b.style.left = Math.random() * 100 + "vw";
+    b.style.background = `hsl(${Math.random()*360},80%,70%)`;
+    b.style.animationDuration = (Math.random()*3 + 4) + "s";
+    document.body.appendChild(b);
+  }
+}
+</script>
+
+</body>
+</html>
