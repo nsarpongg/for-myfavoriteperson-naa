@@ -13,23 +13,30 @@ body {
   text-align: center;
 }
 
+/* Top Image Section */
+.top-image {
+  width: 100%;
+  height: 50vh;
+  background: url("https://i.ibb.co/dwshqDW4/IMG-7896.jpg") center/cover no-repeat;
+}
+
+/* Question Section */
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 20px;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.8rem;
+  margin-top: 20px;
 }
 
+/* Buttons */
 button {
-  padding: 12px 25px;
-  font-size: 18px;
-  margin: 10px;
+  padding: 15px 35px;
+  font-size: 20px;
+  margin: 15px;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -63,45 +70,47 @@ button {
 #lovePage {
   display: none;
   padding: 20px;
-  max-width: 700px;
+  max-width: 800px;
   margin: auto;
 }
 
 .slideshow {
-  width: 300px;
-  height: 400px;
-  margin: 20px auto;
+  margin: 30px auto;
+  max-width: 90%;
   position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .slideshow img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* preserves original ratio */
   position: absolute;
+  left: 0;
+  top: 0;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
 .slideshow img.active {
   opacity: 1;
+  position: relative;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container" id="questionPage">
-  <h1>Will you be my Valentine? ❤️</h1>
-  <button id="yesBtn">Yes 😍</button>
-  <button id="noBtn">No 🙄</button>
+<div id="questionPage">
+  <div class="top-image"></div>
+
+  <div class="container">
+    <h1>Will you be my Valentine, Naa? ❤️</h1>
+    <button id="yesBtn">Yes ❤️😍</button>
+    <button id="noBtn">No 💔🙄</button>
+  </div>
 </div>
 
 <div id="lovePage">
-  <h1>You’re officially mine now 😂❤️</h1>
+  <h1>You’ve always being mine ❤️</h1>
 
   <div class="slideshow">
     <img src="https://i.ibb.co/VpkFbsfS/IMG-4446.jpg">
@@ -120,22 +129,17 @@ button {
 
   <p>
   Do you ever wonder how the universe connected us?<br><br>
-
   I laugh whenever I think about it, but when I really reflect on it, it makes me realize — without any doubt — that you are the one for me.<br><br>
-
   We’ve had our ups and downs, but the way we met always brings me peace. Even though we don’t know what tomorrow holds, one thing I know for sure is that we are meant for each other.<br><br>
-
-  keeping in mind your smile, the long night talks, your presence, your love, your pretty face and yes your cute boobs and ass😂 and everything about you keep me going day in day out.<br><br>
-
-  Everything about you just feels right. I can’t wait to see you again, hug you, kiss you, make out together and tell you how much I love you.<br><br>
-
+  keeping in mind your love, your smile, the long day and night calls, your pretty face and yes your cute boobs and ass😂 keep me going day in day out.<br><br>
+  Everything about you just feels right. And I can’t wait to see you again, hug you, kiss you, make out together and tell you how much I love you.<br><br>
   I’m so lucky to have you 💕
-  </p>
+  </p> 
 
   <iframe 
     src="https://open.spotify.com/embed/track/7IWJTrZvS11K1ziaS3JvYT?utm_source=generator&autoplay=1"
     width="300" 
-    height="80" 
+    height="80"
     frameborder="0"
     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
   </iframe>
@@ -148,10 +152,10 @@ let questionPage = document.getElementById("questionPage");
 let lovePage = document.getElementById("lovePage");
 
 let noClicks = 0;
-let yesSize = 18;
-let noSize = 18;
+let yesSize = 20;
+let noSize = 20;
 
-// Floating hearts
+/* Floating hearts */
 function createHeart() {
   let heart = document.createElement("div");
   heart.classList.add("heart");
@@ -162,7 +166,7 @@ function createHeart() {
 }
 setInterval(createHeart, 500);
 
-// Slideshow
+/* Slideshow */
 let slides = document.querySelectorAll(".slideshow img");
 let currentSlide = 0;
 slides[currentSlide].classList.add("active");
@@ -173,11 +177,10 @@ setInterval(() => {
   slides[currentSlide].classList.add("active");
 }, 2000);
 
-// YES CLICK
+/* YES CLICK */
 yesBtn.addEventListener("click", () => {
 
-  // Confetti
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 120; i++) {
     let confetti = document.createElement("div");
     confetti.style.position = "absolute";
     confetti.style.width = "8px";
@@ -187,7 +190,7 @@ yesBtn.addEventListener("click", () => {
     confetti.style.top = "50%";
     confetti.style.left = "50%";
     confetti.style.transform = 
-      `translate(${Math.random()*500-250}px,${Math.random()*500-250}px)`;
+      `translate(${Math.random()*600-300}px,${Math.random()*600-300}px)`;
     document.body.appendChild(confetti);
     setTimeout(() => confetti.remove(), 1000);
   }
@@ -198,7 +201,7 @@ yesBtn.addEventListener("click", () => {
   }, 800);
 });
 
-// NO CLICK
+/* NO CLICK */
 noBtn.addEventListener("click", () => {
   noClicks++;
 
@@ -207,10 +210,10 @@ noBtn.addEventListener("click", () => {
   else if (noClicks === 3) alert("Last chance…");
   else alert("You don’t actually mean that 😏");
 
-  noSize -= 2;
+  noSize -= 3;
   noBtn.style.fontSize = noSize + "px";
 
-  yesSize += 5;
+  yesSize += 8;
   yesBtn.style.fontSize = yesSize + "px";
 
   noBtn.style.position = "absolute";
