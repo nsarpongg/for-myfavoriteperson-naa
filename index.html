@@ -75,14 +75,8 @@ button {
 }
 
 .slideshow {
-  margin: 30px auto;
-  max-width: 85%;
-  position: relative;
-}
-
-.slideshow {
-  width: 320px;   /* Adjust if needed */
-  height: 420px;  /* Based on your first photo ratio */
+  width: 320px;
+  height: 420px;
   margin: 30px auto;
   position: relative;
   overflow: hidden;
@@ -93,7 +87,7 @@ button {
 .slideshow img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Makes all images fill nicely */
+  object-fit: cover;
   position: absolute;
   left: 0;
   top: 0;
@@ -102,9 +96,8 @@ button {
 }
 
 .slideshow img.active {
-  opacity: 1.5;
+  opacity: 1;
 }
-
 </style>
 </head>
 
@@ -140,10 +133,10 @@ button {
 
   <p>
   Do you ever wonder how the universe connected us?<br><br>
-  I laugh whenever I think about it, but when I really deep it, it makes me realize without any doubt that we were made for eachother.<br><br>
-  6-7 years down the line, with constant ups and downs, but the way we met always brings me peace. Even though we don’t know what tomorrow holds, one thing I know for sure is that we are meant for each other.<br><br>
-  keeping in mind your love, your smile, the long day and night calls, your pretty face and yes your cute boobs and ass😂 keep me going day in day out.<br><br>
-  Everything about you just feels right. And I can’t wait to see you again, hug you, kiss you, make out together, do all what we been planning on the phone and tell you how much I love you.<br><br>
+  I laugh whenever I think about it, but when I really think about it deeply, it makes me realize without any doubt that we were made for each other.<br><br>
+  6–7 years down the line, with constant ups and downs, the way we met always brings me peace. Even though we don’t know what tomorrow holds, one thing I know for sure is that we are meant for each other.<br><br>
+  Keeping in mind your love, your smile, the long day and night calls, your pretty face and yes your cute boobs and ass 😂 keep me going day in and day out.<br><br>
+  Everything about you just feels right. And I can’t wait to see you again, hug you, kiss you, make out together, do all what we’ve been planning on the phone, and tell you how much I love you.<br><br>
   I’m so lucky to have you 💕
   </p> 
 
@@ -175,7 +168,7 @@ function createHeart() {
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 4000);
 }
-setInterval(createHeart, 500);
+let heartInterval = setInterval(createHeart, 500);
 
 /* Slideshow */
 let slides = document.querySelectorAll(".slideshow img");
@@ -190,6 +183,8 @@ setInterval(() => {
 
 /* YES CLICK */
 yesBtn.addEventListener("click", () => {
+
+  clearInterval(heartInterval); // stop hearts after yes
 
   for (let i = 0; i < 120; i++) {
     let confetti = document.createElement("div");
@@ -216,10 +211,10 @@ yesBtn.addEventListener("click", () => {
 noBtn.addEventListener("click", () => {
   noClicks++;
 
-  if (noClicks === 1) alert("You dont mean it, do you? 🥺");
-  else if (noClicks === 2) alert("Naadei really?!🙄 ");
-  else if (noClicks === 3) alert("oh ohemaa, 2 weeks of planning and building this 3ny3 kwa anaa?🥲");
-  else alert("be serious and hit the yes Naa😏🙄");
+  if (noClicks === 1) alert("You don’t mean it, do you? 🥺");
+  else if (noClicks === 2) alert("Naadei really?! 🙄");
+  else if (noClicks === 3) alert("Oh Ohemaa, 2 weeks of planning and building this 3ny3 kwa anaa? 🥲");
+  else alert("Be serious and hit the yes Naa 😏🙄");
 
   noSize -= 3;
   noBtn.style.fontSize = noSize + "px";
